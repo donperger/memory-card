@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from 'react';
 
 const Scoreboard = () => {
-  return (
-    <div>Hello from score board</div>
-  )
-}
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  return <div>Hello from score board</div>;
+};
 
-export default Scoreboard
+export default Scoreboard;

@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const MemoryCard = () => {
-  return (
-    <div>Hello form MemoryCard!</div>
-  )
-}
+  return <div>Hello form MemoryCard!</div>;
+};
 
-export default MemoryCard
+export default MemoryCard;
