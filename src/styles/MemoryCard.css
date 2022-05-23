@@ -1,0 +1,17 @@
+.memory-card {
+  box-sizing: border-box;
+  width: 20rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flag {
+  width: 15rem;
+  height: 10rem;
+}
+
+.country-name {
+  font-weight: 600;
+}

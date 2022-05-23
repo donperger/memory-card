@@ -1,3 +1,4 @@
+import '../styles/MemoryCard.css';
 import { any, string } from 'prop-types';
 import React from 'react';
 
@@ -9,7 +10,7 @@ const MemoryCard = (props) => {
 
   return (
     <div className="memory-card">
-      <img src={props.flagSrc} alt="flag" />
+      <img className="flag" src={props.flagSrc} alt="flag" />
       <div className="country-name">{props.countryName}</div>
     </div>
   );
