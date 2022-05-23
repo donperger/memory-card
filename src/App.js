@@ -7,13 +7,14 @@ import React from 'react';
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+
   return (
     <div className="App">
       <header className="header">
         <div className="app-title">Test your memory</div>
         <Scoreboard score={score} bestScore={bestScore} />
       </header>
-      <MemoryCard />
+      <MemoryCard flagSrc="https://countryflagsapi.com/png/ar" countryName="Argentina" />
     </div>
   );
 }
