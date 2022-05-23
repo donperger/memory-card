@@ -5,8 +5,6 @@ import Scoreboard from './components/Scoreboard';
 import React from 'react';
 
 function App() {
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
   const countries = [
     { name: 'Argentina', flagSrc: 'https://countryflagsapi.com/png/ar', id: 1 },
     { name: 'Brazil', flagSrc: 'https://countryflagsapi.com/png/brazil', id: 2 },
@@ -20,6 +18,22 @@ function App() {
     { name: 'South Africa', flagSrc: 'https://countryflagsapi.com/png/za', id: 10 }
   ];
 
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [clickedCrads, setClickedCards] = useState([]);
+
+  const checkIfCardClickedBefore = (cardId) => {
+    return clickedCrads.includes(cardId);
+  };
+
+  const addCardToClickeCrads = (cardId) => {
+    if (checkIfCardClickedBefore(cardId)) {
+      console.log('You chose the card before');
+    } else {
+      setClickedCards(clickedCrads.concat([cardId]));
+    }
+  };
+
   return (
     <div className="App">
       <header className="header">
@@ -30,7 +44,13 @@ function App() {
       <div className="card-container">
         {countries.map((country) => {
           return (
-            <MemoryCard key={country.id} flagSrc={country.flagSrc} countryName={country.name} />
+            <MemoryCard
+              addCardToClickeCrads={addCardToClickeCrads}
+              key={country.id}
+              flagSrc={country.flagSrc}
+              countryName={country.name}
+              id={country.id}
+            />
           );
         })}
       </div>
