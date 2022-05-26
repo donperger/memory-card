@@ -3,6 +3,7 @@ import './App.css';
 import MemoryCard from './components/MemoryCard';
 import Scoreboard from './components/Scoreboard';
 import React from 'react';
+import Announcer from './components/Announcer';
 
 function App() {
   const [countries, setCountries] = useState([
@@ -19,11 +20,20 @@ function App() {
   ]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [announcedScore, setAnnouncedScore] = useState(0);
   const [clickedCrads, setClickedCards] = useState([]);
+  const [gameState, setGameState] = useState(true);
 
   useEffect(() => {
     mixArray(countries);
   });
+
+  const announce = () => {
+    if (gameState) {
+      setAnnouncedScore(score);
+    }
+    setGameState(!gameState);
+  };
 
   const checkIfCardClickedBefore = (cardId) => {
     return clickedCrads.includes(cardId);
@@ -35,6 +45,7 @@ function App() {
 
   const addCardToClickeCrads = (cardId) => {
     if (checkIfCardClickedBefore(cardId)) {
+      announce();
       resetScore();
       resetClickedCards();
     } else {
@@ -48,7 +59,7 @@ function App() {
   };
 
   const resetScore = () => {
-    if (score !== 0) {
+    if (score > bestScore) {
       setBestScore(score);
     }
     setScore(0);
@@ -85,6 +96,9 @@ function App() {
           );
         })}
       </div>
+      {!gameState && (
+        <Announcer playAgain={announce} score={announcedScore} bestScore={bestScore} />
+      )}
     </div>
   );
 }
