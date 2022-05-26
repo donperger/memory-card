@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import MemoryCard from './components/MemoryCard';
 import Scoreboard from './components/Scoreboard';
 import React from 'react';
 
 function App() {
-  const countries = [
+  const [countries, setCountries] = useState([
     { name: 'Argentina', flagSrc: 'https://countryflagsapi.com/png/ar', id: 1 },
     { name: 'Brazil', flagSrc: 'https://countryflagsapi.com/png/brazil', id: 2 },
     { name: 'Botswana', flagSrc: 'https://countryflagsapi.com/png/bw', id: 3 },
@@ -16,23 +16,54 @@ function App() {
     { name: 'Greenland', flagSrc: 'https://countryflagsapi.com/png/gl', id: 8 },
     { name: 'Madagascar', flagSrc: 'https://countryflagsapi.com/png/mg', id: 9 },
     { name: 'South Africa', flagSrc: 'https://countryflagsapi.com/png/za', id: 10 }
-  ];
-
+  ]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCrads, setClickedCards] = useState([]);
+
+  useEffect(() => {
+    mixArray(countries);
+  });
 
   const checkIfCardClickedBefore = (cardId) => {
     return clickedCrads.includes(cardId);
   };
 
+  const resetClickedCards = () => {
+    setClickedCards([]);
+  };
+
   const addCardToClickeCrads = (cardId) => {
     if (checkIfCardClickedBefore(cardId)) {
-      console.log('You chose the card before');
+      resetScore();
+      resetClickedCards();
     } else {
       setClickedCards(clickedCrads.concat([cardId]));
+      incrementScore();
     }
   };
+
+  const incrementScore = () => {
+    setScore(score + 1);
+  };
+
+  const resetScore = () => {
+    if (score !== 0) {
+      setBestScore(score);
+    }
+    setScore(0);
+  };
+
+  const mixArray = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i - 1));
+      const slot = arr[i];
+      arr[i] = arr[j];
+      arr[j] = slot;
+    }
+  };
+
+  mixArray(countries);
 
   return (
     <div className="App">
