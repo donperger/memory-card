@@ -25,7 +25,9 @@ function App() {
   const [gameState, setGameState] = useState(true);
 
   useEffect(() => {
-    mixArray(countries);
+    if (gameState) {
+      mixArray(countries);
+    }
   });
 
   const announce = () => {
@@ -73,8 +75,6 @@ function App() {
       arr[j] = slot;
     }
   };
-
-  mixArray(countries);
 
   return (
     <div className="App">

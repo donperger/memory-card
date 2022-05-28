@@ -1,3 +1,4 @@
+import '../styles/Announcer.css';
 import { func, number } from 'prop-types';
 import React from 'react';
 
