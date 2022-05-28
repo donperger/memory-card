@@ -12,7 +12,7 @@ const Announcer = (props) => {
   return (
     <div className="announcement-cont">
       <div className="curr-score">You&apos;ve scored: {props.score}!</div>
-      <div className="best-score">Your best score is:{props.bestScore}</div>
+      <div className="best-score">Your best score is: {props.bestScore}</div>
       <button className="play-again" onClick={props.playAgain}>
         Play again
       </button>

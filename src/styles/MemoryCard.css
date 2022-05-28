@@ -1,13 +1,24 @@
+:root {
+  --card-bg-clr: #d9d9d9;
+}
+
 .memory-card {
   box-sizing: border-box;
   width: 20rem;
+  height: 15rem;
   margin: 1rem;
   padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border: 1px solid #000;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
   cursor: pointer;
+  background-color: var(--card-bg-clr);
+  -webkit-box-shadow: 0px 0px 20px 8px rgba(117, 117, 117, 0.8);
+  -moz-box-shadow: 0px 0px 20px 8px rgba(117, 117, 117, 0.8);
+  box-shadow: 0px 0px 20px 8px rgba(117, 117, 117, 0.8);
 }
 
 .flag {
@@ -17,4 +28,5 @@
 
 .country-name {
   font-weight: 600;
+  margin-top: 1rem;
 }

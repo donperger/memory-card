@@ -1,0 +1,42 @@
+:root {
+  --announcer-font-clr: #1df2dd;
+}
+
+.announcement-cont {
+  box-sizing: border-box;
+  position: absolute;
+  top: var(--header-height);
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: var(--announcer-font-clr);
+}
+
+.play-again {
+  box-sizing: border-box;
+  margin: 2rem;
+  height: 3.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border: 2px solid var(--announcer-font-clr);
+  color: var(--announcer-font-clr);
+  background-color: #0d0d0d;
+  border-radius: 1rem;
+  transition: 0.5s;
+}
+
+.play-again:hover {
+  background-color: #056cf2;
+  color: #d9d9d9;
+}
+
+.play-again:active {
+  position: relative;
+  bottom: 0.7rem;
+}
